@@ -2,6 +2,21 @@ import { it, expect } from "vitest";
 import { add } from "./math";
 
 it("should return the correct sum for array of numbers", () => {
-  const result = add([1, 2, 3]);
-  expect(result).toBe(6);
+  const numbers = [1, 2, 3, 7];
+  const expectedResult = numbers.reduce((acc, curr) => acc + curr, 0);
+  const result = add(numbers);
+  expect(result).toBe(expectedResult);
+});
+
+it("should provide NaN if at least one invalid number is provided", () => {
+  const numbers = [1, "invalid", 3, 7];
+  const result = add(numbers);
+  expect(result).toBeNaN();
+});
+
+it("it should provide the correct sum if an array of numeric string is provided", () => {
+  const numbers = ["1", "2", "3", "7"];
+  const expectedResult = numbers.reduce((acc, curr) => acc + +curr, 0);
+  const result = add(numbers);
+  expect(result).toBe(expectedResult);
 });
