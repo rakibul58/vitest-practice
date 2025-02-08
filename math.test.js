@@ -29,7 +29,7 @@ it("should through an error if no argument is provided", () => {
   expect(resultFn).toThrow();
 });
 
-it("should through an error if muilple arguments are provided", () => {
+it("should through an error if multiple arguments are provided", () => {
   const resultFn = () => {
     add(1, 2, 3);
   };
